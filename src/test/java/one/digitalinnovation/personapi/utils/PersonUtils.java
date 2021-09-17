@@ -7,9 +7,9 @@ import java.util.Collections;
 
 public class PersonUtils {
 
-    private static final String FIRST_NAME = "Rodrigo";
-    private static final String LAST_NAME = "Peleias";
-    private static final String CPF_NUMBER = "369.333.878-79";
+    private static final String FIRST_NAME = "Fernanda";
+    private static final String LAST_NAME = "Nascimento";
+    private static final String CPF_NUMBER = "036.610.540-07";
     private static final long PERSON_ID = 1L;
 
     public static PersonDTO createFakeDTO() {

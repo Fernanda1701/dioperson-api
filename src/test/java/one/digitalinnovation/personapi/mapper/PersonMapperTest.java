@@ -4,24 +4,23 @@ import one.digitalinnovation.personapi.dto.request.PersonDTO;
 import one.digitalinnovation.personapi.dto.request.PhoneDTO;
 import one.digitalinnovation.personapi.entity.Person;
 import one.digitalinnovation.personapi.entity.Phone;
-import one.digitalinnovation.personapi.service.PersonService;
 import one.digitalinnovation.personapi.utils.PersonUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-class PersonMapperTest {
+public class PersonMapperTest {
 
     @Autowired
-    public PersonMapper personMapper;
+    private PersonMapper personMapper;
 
     @Test
     void testGivenPersonDTOThenReturnPersonEntity() {
         PersonDTO personDTO = PersonUtils.createFakeDTO();
-        Person person = PersonService.personMapper.toModel(personDTO);
+        Person person = personMapper.toModel(personDTO);
 
         assertEquals(personDTO.getFirstName(), person.getFirstName());
         assertEquals(personDTO.getLastName(), person.getLastName());
@@ -37,7 +36,7 @@ class PersonMapperTest {
     @Test
     void testGivenPersonEntityThenReturnPersonDTO() {
         Person person = PersonUtils.createFakeEntity();
-        PersonDTO personDTO = PersonService.personMapper.toDTO(person);
+        PersonDTO personDTO = personMapper.toDTO(person);
 
         assertEquals(person.getFirstName(), personDTO.getFirstName());
         assertEquals(person.getLastName(), personDTO.getLastName());
@@ -49,5 +48,4 @@ class PersonMapperTest {
         assertEquals(phone.getType(), phoneDTO.getType());
         assertEquals(phone.getNumber(), phoneDTO.getNumber());
     }
-
 }

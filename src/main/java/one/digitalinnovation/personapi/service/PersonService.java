@@ -17,15 +17,13 @@ import java.util.stream.Collectors;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
 
-    public static PersonMapper personMapper;
-    private static PersonRepository personRepository;
+    private PersonRepository personRepository;
+    private final PersonMapper personMapper = PersonMapper.INSTANCE;
 
     public MessageResponseDTO createPerson(PersonDTO personDTO) {
-
         Person personToSave = personMapper.toModel(personDTO);
-
         Person savedPerson = personRepository.save(personToSave);
-        return crateMessageResponse(savedPerson.getId(), "Created person with ID");
+        return createMessageResponse(savedPerson.getId(), "Created person with ID ");
     }
 
     public List<PersonDTO> listAll() {
@@ -36,30 +34,28 @@ public class PersonService {
     }
 
     public PersonDTO findById(Long id) throws PersonNotFoundException {
-        Person person= verifyIfExists(id);
+        Person person = verifyIfExists(id);
         return personMapper.toDTO(person);
     }
 
-    public void delete(Long id) throws PersonNotFoundException{
+    public void delete(Long id) throws PersonNotFoundException {
         verifyIfExists(id);
         personRepository.deleteById(id);
     }
 
-    public static MessageResponseDTO updateById(Long id, PersonDTO personDTO) throws PersonNotFoundException{
+    public MessageResponseDTO updateById(Long id, PersonDTO personDTO) throws PersonNotFoundException {
         verifyIfExists(id);
         Person personToUpdate = personMapper.toModel(personDTO);
-
         Person updatedPerson = personRepository.save(personToUpdate);
-        return crateMessageResponse(updatedPerson.getId(), "Updated person with ID");
+        return createMessageResponse(updatedPerson.getId(), "Updated person with ID ");
     }
 
-
-    private static Person verifyIfExists(Long id) throws PersonNotFoundException {
+    private Person verifyIfExists(Long id) throws PersonNotFoundException {
         return personRepository.findById(id)
                 .orElseThrow(() -> new PersonNotFoundException(id));
     }
 
-    private static MessageResponseDTO crateMessageResponse(Long id, String message) {
+    private MessageResponseDTO createMessageResponse(Long id, String message) {
         return MessageResponseDTO
                 .builder()
                 .message(message + id)
