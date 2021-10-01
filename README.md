@@ -30,7 +30,7 @@ O projeto foi desenvolvido para efetuar operações de gerenciamento de usuário
 <h3 align="center">Tabela: Modelo de Dados</h3>
 
 <p align="center">
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/tabelaModeloDeDados.png" />
+  <img alt="tabelaModeloDeDados" title="tabelaModeloDeDados" src="./assets/tabelaModeloDeDados.png" />
 </p>
 
 
