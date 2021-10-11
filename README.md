@@ -1,5 +1,5 @@
 <h1 align="center">
-    <a href="https://pt-br.reactjs.org/">Sistema de gerenciamento de pessoas 📑</a>
+    <a href="https://github.com/Fernanda1701/dioperson-api">Sistema de gerenciamento de pessoas 📑</a>
 </h1>
 <p align="center">Em API REST com Spring Boot</p>
 
